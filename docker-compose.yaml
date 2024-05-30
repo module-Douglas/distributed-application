@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  api_1:
+    build: .
+    tty: true
+    stdin_open: true
+    environment:
+      - NAME=api_1
+  api_2:
+    build: .
+    tty: true
+    stdin_open: true
+    environment:
+      - NAME=api_2
+  api_3:
+    build: .
+    tty: true
+    stdin_open: true
+    environment:
+      - NAME=api_3
+  web:
+    build: ./nginx
+    depends_on: 
+      - api_1
+      - api_2
+      - api_3
+    ports:
+      - 5200:80

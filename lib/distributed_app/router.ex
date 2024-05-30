@@ -17,6 +17,7 @@ defmodule DistributedApp.Router do
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(:ok, %{
+      actual_node: node(),
       time: DateTime.utc_now()
     }
       |> Map.merge(Cache.get())
@@ -32,6 +33,7 @@ defmodule DistributedApp.Router do
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(:ok, %{
+      actual_node: node(),
       time: DateTime.utc_now()
     }
       |> Map.merge(Cache.get())
